@@ -3,6 +3,7 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import { connect } from 'react-redux';
 import { addTypes } from '../../actions';
 import image from '../../loading.gif';
+import { PokemonTypeCards } from '../PokemonTypeCards/PokemonTypeCards.js'
 
 
 export class PokemonContainer extends Component {
@@ -27,8 +28,11 @@ export class PokemonContainer extends Component {
     if (!this.props.pokeTypes.length) {
       return <img src={image} alt='loading...' />
     }
+    const pokemonTypeCards = this.props.pokeTypes.map(type => {
+      return <PokemonTypeCards {...type} key={type.id}/>
+    })
     return (
-      <h1>hi</h1>
+      (pokemonTypeCards)
     );
   }
 }
