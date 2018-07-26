@@ -12,9 +12,8 @@ class PokemonContainer extends Component {
   }
 
   fetchPokemon = async () => {
-    const url = 'https://localhost:3001/types'
     try {
-      const response = await fetch(url)
+      const response = await fetch('http://localhost:3001/types')
       const pokemon = await response.json()
       await this.props.addPokemon(pokemon)
     } catch (error) {
