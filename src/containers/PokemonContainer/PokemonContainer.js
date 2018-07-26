@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes, { shape, func, string } from 'prop-types';
 import { connect } from 'react-redux';
 import { addPokemon } from '../../actions';
+import image from '../../loading.gif'
 
 
 class PokemonContainer extends Component {
@@ -24,9 +25,7 @@ class PokemonContainer extends Component {
   render() {
     return (
       <div>
-        <button onClick={()=> {
-          this.props.addPokemon()
-        }}> Catch'em All </button>
+    
       </div>
     );
   }
@@ -36,7 +35,6 @@ class PokemonContainer extends Component {
 
 
 PokemonContainer.propTypes = {
-  fake: shape({ fake: string }),
   addPokemon: func.isRequired
 };
 
