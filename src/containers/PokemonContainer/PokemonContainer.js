@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { addTypes } from '../../actions';
 import image from '../../loading.gif';
-import { PokemonTypeCards } from '../PokemonTypeCards/PokemonTypeCards.js'
+import PokemonTypeCards from '../PokemonTypeCards/PokemonTypeCards.js'
 
 
 export class PokemonContainer extends Component {
@@ -40,9 +40,9 @@ export class PokemonContainer extends Component {
 
 
 
-PokemonContainer.propTypes = {
-  addTypes: func.isRequired
-};
+// PokemonContainer.propTypes = {
+//   addTypes: func.isRequired
+// };
 
 export const mapStateToProps = (state) => ({ 
   pokeTypes: state.pokeTypes });

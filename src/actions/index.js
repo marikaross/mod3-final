@@ -3,8 +3,7 @@ export const addTypes = (types) => ({
   types
 })
 
-export const addPokemon = (pokemon, id) => ({
+export const addPokemon = (pokemon) => ({
   type: 'ADD_POKEMON',
-  pokemon,
-  id
+  pokemon
 })

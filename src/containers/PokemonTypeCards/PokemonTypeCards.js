@@ -1,31 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addPokemon } from '../../actions';
 
 
 export const PokemonTypeCards = (props) => {
 
-  const findPokemon = () => {
-    const pokemonUrls = props.pokemon.map(async num => {
-      fetch(`http://localhost:3001/pokemon/${num}`)
-      const response = await Promise.all(pokemonUrls)
-      const pokemonInfo = await response.json()
-      this.cleanPokemon(pokemonInfo)
-    });
+  const handleClick = async () => {
+    const pokeGuys = await findPokemon()
+    props.addPokemon(pokeGuys)
   }
 
-  const cleanPokemon = (info) => {
-    const cleanPokes = info.map(pokedude => {
-      return {
-        name: pokeDude.name,
-        type: pokedude.type,
-        weight: pokeDude.weight,
-        image: pokeDude.sprites.front_default
-      }
-    })
+
+  const findPokemon = () => {
+    const pokemonPromises = props.pokemon.map(async num => {
+      const response = await fetch(`http://localhost:3001/pokemon/${num}`)
+      const pokeInfo = await response.json()
+
+      return pokeInfo  
+    });
+    return Promise.all(pokemonPromises)
+     
+
   }
+
 
   return (
-    <div key={props.id} onClick={findPokemon}>
+    <div key={props.id} onClick={handleClick}>
       <h2>{props.name}</h2>
     </div>
     )
@@ -33,12 +33,12 @@ export const PokemonTypeCards = (props) => {
 
 export const mapStateToProps = (state) => ({
   pokeTypes: state.pokeTypes,
-  pokemon: state.pokemon
+  pokemonState: state.pokemonState
 
 })
 
 export const mapDispatchToProps = (dispatch) => ({
-  addPokemon: (pokemon, id) => dispatch(addpokemon(pokemon, id))
+  addPokemon: (pokemon) => dispatch(addPokemon(pokemon))
 })
 
-export default connect(mapStateToProps)(PokemonTypeCards)
+export default connect(mapStateToProps, mapDispatchToProps)(PokemonTypeCards)

@@ -4,7 +4,7 @@ import pokemonReducer from './pokemon-reducer'
 
 const rootReducer = combineReducers({
   pokeTypes: typeReducer,
-  pokemon: pokemonReducer
+  pokemonState: pokemonReducer
 })
 
 export default rootReducer
