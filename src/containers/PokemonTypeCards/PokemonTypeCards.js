@@ -32,10 +32,9 @@ if (!props.pokemonState.length) {
   const pokeDeets = props.pokemonState.map(pokemon => {
       return <PokeDetails {...pokemon}/>
     })
-    return (
-      (pokeDeets)
-      )
+  return (pokeDeets)
   }
+
 
   
 
