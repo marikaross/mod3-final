@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className='App'>
         <h1 className='header'> POKéDEX </h1>
-        <PokemonContainer />
+        <PokemonContainer className='PokemonContainer'/>
       </div>
     );
   }
@@ -16,3 +16,5 @@ class App extends Component {
 
 
 export default App;
+
+

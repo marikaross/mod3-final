@@ -1,32 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes, { shape, func, string } from 'prop-types';
 import { connect } from 'react-redux';
-import { addPokemon } from '../../actions';
-import image from '../../loading.gif'
+import { addTypes } from '../../actions';
+import image from '../../loading.gif';
 
 
-class PokemonContainer extends Component {
+export class PokemonContainer extends Component {
 
   componentDidMount() {
-    console.log('hi')
-    this.fetchPokemon()
+    this.fetchTypes()
   }
 
-  fetchPokemon = async () => {
+  fetchTypes = async () => {
     try {
       const response = await fetch('http://localhost:3001/types')
-      const pokemon = await response.json()
-      await this.props.addPokemon(pokemon)
+      const types = await response.json()
+      this.props.addTypes(types)
     } catch (error) {
-
+      throw (error.message)
     }
   }
+  
+
 
   render() {
+    if (!this.props.pokeTypes.length) {
+      return <img src={image} alt='loading...' />
+    }
     return (
-      <div>
-    
-      </div>
+      <h1>hi</h1>
     );
   }
 }
@@ -35,13 +37,13 @@ class PokemonContainer extends Component {
 
 
 PokemonContainer.propTypes = {
-  addPokemon: func.isRequired
+  addTypes: func.isRequired
 };
 
-const mapStateToProps = (state) => ({ 
-  pokemon: state.pokemon });
+export const mapStateToProps = (state) => ({ 
+  pokeTypes: state.pokeTypes });
 
-const mapDispatchToProps = dispatch => ({ addPokemon:
-  (pokemon) => dispatch(addPokemon(pokemon))
+export const mapDispatchToProps = dispatch => ({ 
+  addTypes: (types) => dispatch(addTypes(types))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(PokemonContainer);

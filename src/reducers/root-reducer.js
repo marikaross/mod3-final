@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import pokemonReducer from './pokemon-reducer'
+import typeReducer from './type-reducer'
 
 const rootReducer = combineReducers({
-  pokemon: pokemonReducer
+  pokeTypes: typeReducer
 })
 
 export default rootReducer
